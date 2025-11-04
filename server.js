@@ -7,9 +7,17 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
+app.get('/', (req, res) => {
+    res.status(200).json({ 
+        message: 'API de Autenticação Ativa!', 
+        documentation: '/api/users'
+    });
+});
+
 app.use(express.json());
 
 app.use('/api/users', require('./src/routes/userRoutes'));
+
 
 // Conexão com o MongoDB
 mongoose.connect(MONGODB_URI)
