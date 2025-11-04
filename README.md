@@ -9,47 +9,41 @@ Este projeto é uma API Backend robusta, desenvolvida em Node.js com Express e M
 
 ## 🎯 Objetivo e Metodologia
 
-O objetivo principal deste projeto foi demonstrar a aplicação de boas práticas e arquitetura de software em um ambiente de Backend:
-
-* **Clean Code (Controller/Service):** Estrutura em camadas Controller-Service para separação de responsabilidades, garantindo modularidade e fácil manutenção.
-* **Segurança (JWT):** Utilização de JSON Web Tokens (JWT) para autenticação e gestão de sessão sem estado (stateless).
-* **Banco de Dados:** Conexão e modelagem de dados com **MongoDB** usando o ODM **Mongoose**.
-* **CRUD Básico:** Implementação das operações essenciais de Cadastro (C) e Leitura de Perfil (R).
-
-## ✨ Rotas da API
-
-| Rota | Método | Descrição | Requer Token? |
-| :--- | :--- | :--- | :--- |
-| `/api/users/register` | `POST` | Cria um novo usuário, hasheia a senha e retorna o Token JWT. | Não |
-| `/api/users/login` | `POST` | Autentica o usuário com email/senha e retorna um novo Token JWT. | Não |
-| `/api/users/profile` | `GET` | Retorna os dados do perfil do usuário logado. | **Sim** (Usa `authMiddleware`) |
+* **Clean Code:** Estrutura em camadas **Controller-Service** para separação de responsabilidades.
+* **Segurança:** Utilização de **JSON Web Tokens (JWT)** para autenticação e gestão de sessão.
+* **Banco de Dados:** Conexão e modelagem de dados com **MongoDB** (Mongoose).
 
 ---
 
-## ☁️ Deploy (Teste Rápido)
+## ☁️ Teste Rápido (URL Pública)
 
-Para testar o Backend **imediatamente** sem configurar o ambiente local, use as credenciais de teste abaixo em uma ferramenta como Insomnia ou Postman.
+Você pode testar esta API diretamente no seu navegador ou em ferramentas como Insomnia ou Postman.
 
-**URL Base da API (Após o Deploy):** `[COLE A URL DO SEU DEPLOY AQUI]`
+### 🔗 URL Base do Deploy:
+`https://api-cadastro-de-usuarios-kl4n.onrender.com`
 
-* **Usuário de Teste:** (Cadastre um usuário no ambiente de deploy para ser usado como exemplo)
-    * Email: `usuario.demo@teste.com`
-    * Senha: `demo1234`
-    
----
+### 1. Teste de Status (GET /)
 
-## 🛠️ Como Rodar Localmente (Desenvolvimento)
+Este teste verifica se o servidor está ativo na nuvem.
 
-Para rodar o projeto em sua máquina e fazer alterações, siga os passos abaixo:
+| Detalhe | Valor |
+| :--- | :--- |
+| **Rota** | `/` |
+| **Método** | `GET` |
+| **Esperado** | Status `200 OK` e uma mensagem JSON. |
 
-### 1. Clonar e Instalar
+### 2. Cadastro de Novo Usuário (POST /register)
 
-```bash
-# 1. Clone o repositório
-git clone SUA_URL_DO_REPOSITORIO_AQUI api-cadastro-usuarios
+Este teste valida a gravação no banco de dados e a emissão do Token JWT.
 
-# 2. Acesse a pasta
-cd api-cadastro-usuarios
-
-# 3. Instale as dependências
-npm install
+| Detalhe | Valor |
+| :--- | :--- |
+| **Rota** | `/api/users/register` |
+| **Método** | `POST` |
+| **Body (JSON)** |
+```json
+{
+    "name": "Usuario Teste",
+    "email": "teste@publico.com",
+    "password": "SenhaSegura123"
+}
