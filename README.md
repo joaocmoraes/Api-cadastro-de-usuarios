@@ -50,3 +50,19 @@ Valida a gravação no banco de dados, o *hashing* da senha e a emissão do Toke
     "email": "teste@publico.com",
     "password": "SenhaSegura123"
 }
+
+### 3. Login (POST /Login)
+
+Valida a gravação no banco de dados, o *hashing* da senha e a emissão do Token JWT.
+
+| Detalhe | Valor |
+| :--- | :--- |
+| **Rota** | `/api/users/register` |
+| **Método** | `POST` |
+| **Body (JSON)** |
+```json
+{
+    "name": "Usuario Teste",
+    "email": "teste@publico.com",
+    "password": "SenhaSegura123"
+}
