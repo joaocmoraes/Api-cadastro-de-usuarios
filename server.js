@@ -22,7 +22,7 @@ app.use('/api/users', require('./src/routes/userRoutes'));
 // Conexão com o MongoDB
 mongoose.connect(MONGODB_URI)
     .then(() => {
-        console.log('✅ Conectado ao MongoDB com sucesso!');
+        console.log('Conectado ao MongoDB com sucesso!');
         
         // 2. Inicialização do Servidor SÓ DEPOIS da conexão
         app.listen(PORT, () => {
